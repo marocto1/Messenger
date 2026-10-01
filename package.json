@@ -11,6 +11,8 @@
     "dev:web": "npm --workspace apps/web run dev",
     "dev:server": "npm --workspace server run dev",
     "build:web": "npm --workspace apps/web run build",
+    "build": "npm run build:web",
+    "start": "node scripts/production-all.mjs",
     "dev:desktop": "npm --workspace apps/desktop run dev",
     "build:desktop": "npm --workspace apps/desktop run build",
     "build:android": "npm --workspace apps/mobile run build:android",
