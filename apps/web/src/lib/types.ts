@@ -152,3 +152,4 @@ export type SocketEvent =
   | { type: 'draft:updated'; conversationId: string; body: string; replyToId: string | null; updatedAt: string }
   | CallSocketEvent
   | RoomSocketEvent;
+

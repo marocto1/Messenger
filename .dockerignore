@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+**/.next*
+**/out
+**/.env
+**/.env.local
+server/data
+backups
+.runtime
+test-results
+playwright-report
+apps/mobile/android
+apps/desktop/src-tauri/target
