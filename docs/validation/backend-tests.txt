@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 test
+> node --test --test-concurrency=1 tests/*.test.mjs
+
+✔ v0.14 migration, legacy login, FK integrity, second initialization (189.717376ms)
+✔ registration, hashed sessions, authentication, origin checks and PUT preflight (166.423104ms)
+✔ direct messages, exact idempotency, reply, edit, receipt privacy, reaction, forward, deletion (80.771848ms)
+✔ groups, roles, invite, state, folders, blocked users, reports, mentions and activity (79.833625ms)
+✔ channels, subscriber cannot publish, channel comments, pinning and search (37.575696ms)
+✔ uploads: resumable, ownership, missing chunks, completion retry, MIME safety, scoped tickets and range (55.005903ms)
+✔ stable timestamp ties in message/gallery pagination, no omissions or overlap (65.712836ms)
+✔ draft authorization, sync cursor, scheduled date validation, scheduled send and export (4445.64304ms)
+✔ Bot API tokens, SSRF protection, mini app URL policy and token rotation (97.138112ms)
+✔ 2FA enable, TOTP replay blocked, recovery codes single use, passkey challenge rejection (249.441578ms)
+✔ WebSocket real messaging, typing, call signaling, voice/video rooms and logout revocation (24.727467ms)
+✔ online backup, live restore guard, checksums and isolated restore without stale WAL (340.081986ms)
+✔ final data integrity and migration idempotency (128.933645ms)
+✔ registration throttling rejects forged proxy headers unless TRUST_PROXY is explicit (363.400608ms)
+✔ SSRF: loopback, private, link-local, mapped IPv6 and URL tricks (2.927007ms)
+✔ MIME: claimed images cannot execute HTML/SVG (0.366301ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6653.766989

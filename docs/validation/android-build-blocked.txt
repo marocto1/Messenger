@@ -1,0 +1,11 @@
+file:///workspace/scratch/39bd1d12744f/project/messenger-mvp-v0.14/apps/mobile/scripts/build-android.mjs:8
+if (!process.env.ANDROID_HOME && !process.env.ANDROID_SDK_ROOT) throw new Error('Android SDK is not configured. Set ANDROID_HOME to your installed SDK (for example D:\\Android\\Sdk).');
+                                                                      ^
+
+Error: Android SDK is not configured. Set ANDROID_HOME to your installed SDK (for example D:\Android\Sdk).
+    at file:///workspace/scratch/39bd1d12744f/project/messenger-mvp-v0.14/apps/mobile/scripts/build-android.mjs:8:71
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

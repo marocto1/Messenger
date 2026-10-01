@@ -1,0 +1,34 @@
+{
+  "name": "messenger-mvp",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/desktop",
+    "apps/mobile",
+    "server"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:server": "npm --workspace server run dev",
+    "build:web": "npm --workspace apps/web run build",
+    "dev:desktop": "npm --workspace apps/desktop run dev",
+    "build:desktop": "npm --workspace apps/desktop run build",
+    "build:android": "npm --workspace apps/mobile run build:android",
+    "open:android": "npm --workspace apps/mobile run open:android",
+    "backup": "node scripts/backup.mjs",
+    "restore": "node scripts/restore.mjs",
+    "dev": "node scripts/run.mjs web",
+    "dev:all": "node scripts/run.mjs web",
+    "prepare:android": "npm --workspace apps/mobile run prepare:android",
+    "release:android": "node scripts/android-release.mjs",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "test:ui": "playwright test",
+    "lint": "npm --workspace apps/web run lint",
+    "typecheck": "tsc --noEmit -p apps/web/tsconfig.json",
+    "start:server": "npm --workspace server run start"
+  },
+  "version": "1.0.0",
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

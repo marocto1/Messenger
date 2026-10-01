@@ -1,0 +1,60 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 prepare:android
+> npm --workspace apps/mobile run prepare:android
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mobile@1.0.0 prepare:android
+> node ./scripts/prepare-android.mjs
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 build:web
+> npm --workspace apps/web run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-web@1.0.0 build
+> next build
+
+▲ Next.js 16.3.7 (Turbopack)
+✓ Running next.config.ts took 24ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 295ms
+  Running TypeScript ...
+  Finished TypeScript in 1354ms ...
+  Collecting page data using 4 workers ...
+  Generating static pages using 4 workers (0/3) ...
+✓ Generating static pages using 4 workers (3/3) in 370ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+✔ Adding native android project in android in 50.22ms
+✔ add in 50.68ms
+✔ Copying web assets from out to android/app/src/main/assets/public in 22.19ms
+✔ Creating capacitor.config.json in android/app/src/main/assets in 422.43μs
+✔ copy android in 30.25ms
+✔ Updating Android plugins in 856.61μs
+[info] Found 2 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/push-notifications@8.1.2
+✔ update android in 18.95ms
+✔ Syncing Gradle in 206.02μs
+[success] android platform added!
+Follow the Developer Workflow guide to get building:
+https://capacitorjs.com/docs/basics/workflow
+[ANDROID] Deep links enabled: marocto-messenger://invite/<token> and marocto-messenger://chat/<conversationId>
+[ANDROID] Android Share Target enabled.
+[ANDROID] Native ShareTarget plugin installed.
+[PUSH] google-services.json is missing. The app can run, but FCM registration requires this Firebase file.
+[ANDROID] API: http://10.0.2.2:4000
+[ANDROID] WS : ws://10.0.2.2:4000/ws

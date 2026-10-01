@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 build:desktop
+> npm --workspace apps/desktop run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-desktop@1.0.0 build
+> tauri build
+
+failed to run 'cargo metadata' command to get workspace directory: failed to run command cargo metadata --no-deps --format-version 1: No such file or directory (os error 2)
+       Error failed to run 'cargo metadata' command to get workspace directory: failed to run command cargo metadata --no-deps --format-version 1: No such file or directory (os error 2)
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path /workspace/scratch/39bd1d12744f/project/messenger-mvp-v0.14/apps/desktop
+npm error workspace messenger-desktop@1.0.0
+npm error location /workspace/scratch/39bd1d12744f/project/messenger-mvp-v0.14/apps/desktop
+npm error command failed
+npm error command sh -c tauri build

@@ -1,0 +1,57 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 prepare:android
+> npm --workspace apps/mobile run prepare:android
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mobile@1.0.0 prepare:android
+> node ./scripts/prepare-android.mjs
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-mvp@1.0.0 build:web
+> npm --workspace apps/web run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> messenger-web@1.0.0 build
+> next build
+
+▲ Next.js 16.3.7 (Turbopack)
+✓ Running next.config.ts took 47ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 947ms
+  Running TypeScript ...
+  Finished TypeScript in 3.2s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 466ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+└ ○ /icon.svg
+
+
+○  (Static)  prerendered as static content
+
+[ANDROID] Native ShareTarget plugin and Marocto icons installed.
+[PUSH] google-services.json is missing. The app can run, but FCM registration requires this Firebase file.
+[ANDROID] API: https://api.example.com
+[ANDROID] WS : wss://api.example.com/ws
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+✔ Copying web assets from out to android/app/src/main/assets/public in 19.38ms
+✔ Creating capacitor.config.json in android/app/src/main/assets in 495.76μs
+✔ copy android in 28.45ms
+✔ Updating Android plugins in 684.20μs
+[info] Found 2 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/push-notifications@8.1.2
+✔ update android in 32.06ms
+[info] Sync finished in 0.071s

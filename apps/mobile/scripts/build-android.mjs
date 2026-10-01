@@ -1,0 +1,12 @@
+import { existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { resolve } from 'node:path';
+import { runtimeEnv } from '../../../scripts/runtime.mjs';
+const cwd = resolve(import.meta.dirname, '..');
+const android = resolve(cwd, 'android');
+const gradle = resolve(android, process.platform === 'win32' ? 'gradlew.bat' : 'gradlew');
+if (!process.env.ANDROID_HOME && !process.env.ANDROID_SDK_ROOT) throw new Error('Android SDK is not configured. Set ANDROID_HOME to your installed SDK (for example D:\\Android\\Sdk).');
+if (!existsSync(gradle)) throw new Error('Android project not generated. Run npm run prepare:android.');
+execFileSync(gradle, [process.env.ANDROID_BUILD_TYPE === 'release' ? 'assembleRelease' : 'assembleDebug'], { cwd: android, env: runtimeEnv(), stdio: 'inherit', shell: process.platform === 'win32' });
+console.log('APK directory:', resolve(android, 'app', 'build', 'outputs', 'apk', process.env.ANDROID_BUILD_TYPE === 'release' ? 'release' : 'debug'));
+if (process.env.ANDROID_BUILD_TYPE === 'release') console.log('Unsigned release APK requires your own signing certificate before distribution.');

@@ -1,0 +1,3 @@
+Tauri CLI JSON schema: PASS. Rust numeric format annotations ignored; JSON property/type/range validation retained.
+Separate localhost devCsp; production HTTPS/WSS CSP: PASS.
+Native build remains unexecuted: Cargo unavailable.
