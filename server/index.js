@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import Database from 'better-sqlite3';
+import { createDatabase } from './db.js';
 import { WebSocketServer, WebSocket } from 'ws';
 import { detectSafeMime, inlineMime, validateExternalUrl, postWebhook } from './security.js';
 
@@ -52,7 +52,7 @@ if (fs.existsSync(lockPath)) {
 fs.writeFileSync(lockPath, String(process.pid), { flag: 'wx' });
 process.on('exit', () => { try { if (fs.readFileSync(lockPath, 'utf8') === String(process.pid)) fs.unlinkSync(lockPath); } catch {} });
 
-const db = new Database(dbPath);
+const db = createDatabase(dbPath);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 db.pragma('busy_timeout = 5000');
