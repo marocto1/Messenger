@@ -3,8 +3,18 @@ const browserWs = typeof window !== 'undefined'
   ? `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws`
   : '';
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || browserOrigin || 'http://localhost:4000';
-export const WS_URL = process.env.NEXT_PUBLIC_WS_URL || browserWs || 'ws://localhost:4000/ws';
+const isLocalBrowser = typeof window !== 'undefined'
+  && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+const PRODUCTION_API_URL = 'https://messenger-ennx.vercel.app';
+const PRODUCTION_WS_URL = 'wss://messenger-ennx.vercel.app/ws';
+
+export const API_URL = process.env.NEXT_PUBLIC_API_URL
+  || (isLocalBrowser ? browserOrigin : PRODUCTION_API_URL)
+  || 'http://localhost:4000';
+export const WS_URL = process.env.NEXT_PUBLIC_WS_URL
+  || (isLocalBrowser ? browserWs : PRODUCTION_WS_URL)
+  || 'ws://localhost:4000/ws';
 export const RTC_ICE_SERVERS: RTCIceServer[] = (() => {
   const fallback: RTCIceServer[] = [
     { urls: 'stun:stun.l.google.com:19302' },
