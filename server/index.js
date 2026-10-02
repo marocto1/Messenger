@@ -69,12 +69,15 @@ let webauthnModulePromise = null;
 
 const server = http.createServer(async (req, res) => {
   setCors(req, res);
-  if (req.headers.origin && !ALLOWED_ORIGINS.has(req.headers.origin)) return json(res, 403, { error: 'ORIGIN_DENIED', message: 'Этот источник не разрешён.' });
+  if (req.headers.origin && !isAllowedOrigin(req)) return json(res, 403, { error: 'ORIGIN_DENIED', message: 'Этот источник не разрешён.' });
   if (req.method === 'OPTIONS') return sendEmpty(res, 204);
 
   try {
     assertRateLimit(`requests:${clientKey(req)}`, 1200, 60_000);
     const url = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
+    if (url.pathname === '/api' || url.pathname.startsWith('/api/')) {
+      url.pathname = url.pathname.slice(4) || '/';
+    }
     const route = `${req.method} ${url.pathname}`;
 
     if (route === 'GET /health') {
@@ -1471,7 +1474,7 @@ server.on('upgrade', (req, socket, head) => {
     const url = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
     if (url.pathname !== '/ws') return socket.destroy();
     const origin = req.headers.origin;
-    if (origin && !ALLOWED_ORIGINS.has(origin)) return socket.destroy();
+    if (origin && !isAllowedOrigin(req)) return socket.destroy();
     const token = url.searchParams.get('token') || '';
     const session = getSessionByToken(token);
     if (!session) return socket.destroy();
@@ -3405,9 +3408,23 @@ function setCors(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
 }
 
+function isAllowedOrigin(req) {
+  const origin = req.headers.origin;
+  if (!origin) return true;
+  if (ALLOWED_ORIGINS.has(origin)) return true;
+  try {
+    const parsed = new URL(origin);
+    const forwardedHost = String(req.headers['x-forwarded-host'] || req.headers.host || '').split(',')[0].trim();
+    const forwardedProto = String(req.headers['x-forwarded-proto'] || 'https').split(',')[0].trim();
+    return Boolean(forwardedHost) && parsed.host === forwardedHost && parsed.protocol === `${forwardedProto}:`;
+  } catch {
+    return false;
+  }
+}
+
 function getAllowedOrigin(req) {
   const origin = req.headers.origin;
-  return origin && ALLOWED_ORIGINS.has(origin) ? origin : DEFAULT_ALLOWED_ORIGIN;
+  return origin && isAllowedOrigin(req) ? origin : DEFAULT_ALLOWED_ORIGIN;
 }
 
 function readJson(req) {
