@@ -21,12 +21,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Sync package lock with PostgreSQL dependency
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
       - run: npm ci
       - run: npm --workspace apps/web run build
       - run: node --check server/index.js
       - run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json OK')"
       - run: test -f server/Dockerfile.vercel
-      - name: Remove one-time check workflow
+      - name: Commit lockfile and remove one-time workflow
         if: success()
         shell: bash
         run: |
@@ -34,5 +36,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Remove one-time fresh Vercel config check"
+          git commit -m "Finalize fresh Vercel Services deployment config"
           git push origin HEAD:main
