@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node ../../scripts/build-web-vercel.mjs",
     "start": "node ../../scripts/serve-web.mjs",
     "lint": "eslint ."
   },
